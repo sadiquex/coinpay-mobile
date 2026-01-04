@@ -1,3 +1,4 @@
+import { useTheme } from "@/contexts/theme-context";
 import {
   ChevronRight,
   CreditCard,
@@ -25,13 +26,15 @@ function TransactionCategoryRow({
 }: TransactionCategoryProps) {
   return (
     <TouchableOpacity className="flex-row items-center justify-between py-6">
-      <View className="flex-row items-center gap-4 flex-1">
+      <View className="flex-1 flex-row items-center gap-4">
         <View
-          className={`w-10 h-10 rounded-full items-center justify-center ${iconBgColor}`}
+          className={`h-10 w-10 items-center justify-center rounded-full ${iconBgColor}`}
         >
           {icon}
         </View>
-        <Text className="text-base font-medium flex-1">{label}</Text>
+        <Text className="flex-1 text-base font-medium text-gray-900 dark:text-gray-100">
+          {label}
+        </Text>
       </View>
       <View className="flex-row items-center gap-3">
         <Text className={`text-base font-semibold ${valueColor}`}>{value}</Text>
@@ -42,6 +45,7 @@ function TransactionCategoryRow({
 }
 
 export default function HomeTransactions() {
+  const { theme } = useTheme();
   const categories = [
     {
       icon: <CreditCard size={20} color="white" />,
@@ -74,18 +78,23 @@ export default function HomeTransactions() {
   ];
 
   return (
-    <View className="mt-12 mx-4">
-      <TouchableOpacity className="flex-row items-center justify-between mb-4">
-        <Text className="font-semibold text-lg">Transactions</Text>
-        <ChevronRight size={20} color="black" />
+    <View className="mx-4 mt-14">
+      <TouchableOpacity className="mb-4 flex-row items-center justify-between">
+        <Text className="text-lg font-semibold text-gray-900 dark:text-white">
+          Transactions
+        </Text>
+        <ChevronRight
+          size={20}
+          color={theme === "dark" ? "#9CA3AF" : "#000000"}
+        />
       </TouchableOpacity>
 
-      <View className="bg-white rounded-lg overflow-hidden p-4">
+      <View className="overflow-hidden rounded-lg bg-white p-4 dark:bg-gray-800">
         {categories.map((category, index) => (
           <View key={category.label}>
             <TransactionCategoryRow {...category} />
             {index < categories.length - 1 && (
-              <View className="h-px bg-gray-100 mx-4" />
+              <View className="mx-4 h-px bg-gray-100 dark:bg-gray-700" />
             )}
           </View>
         ))}

@@ -6,9 +6,16 @@ module.exports = {
     "./components/**/*.{js,jsx,ts,tsx}",
     "./screens/**/*.{js,jsx,ts,tsx}",
   ],
+  darkMode: "class",
   presets: [require("nativewind/preset")],
   theme: {
-    extend: {},
+    extend: {
+      // #2A2A2A
+      colors: {
+        "dark-mode-bg": "#2A2A2A",
+        "primary-blue": "#304FFF",
+      },
+    },
   },
   plugins: [],
 };

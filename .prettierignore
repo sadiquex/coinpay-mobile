@@ -1,0 +1,17 @@
+node_modules
+.expo
+.expo-shared
+dist
+build
+*.log
+coverage
+.next
+.nuxt
+.cache
+.vscode
+.idea
+*.lock
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+

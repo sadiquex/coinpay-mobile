@@ -1,3 +1,6 @@
+import { CustomText } from "@/components/ui/custom-text";
+import { useTheme } from "@/contexts/theme-context";
+import { router } from "expo-router";
 import {
   Bell,
   ChevronDown,
@@ -9,12 +12,14 @@ import {
   Wallet,
 } from "lucide-react-native";
 import React from "react";
-import { Image, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Image, TextInput, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function BalanceSection() {
+  const { theme } = useTheme();
+
   return (
-    <View className="bg-[#2F4CF3] relative p-4 rounded-lg min-h-[400px] gap-4">
+    <View className="relative min-h-[400px] gap-4 rounded-lg bg-[#2F4CF3] p-4">
       <SafeAreaView className="flex-1 gap-12">
         {/* trophy,search bar and notificatoins button */}
         <View className="flex-row items-center justify-between gap-4">
@@ -22,13 +27,13 @@ export default function BalanceSection() {
             <Trophy size={20} color="white" />
           </TouchableOpacity>
 
-          <View className="flex-1 rounded-full p-2 flex-row items-center gap-2 border border-white bg-white/20">
+          <View className="flex-1 flex-row items-center gap-2 rounded-full border border-white bg-white/20 p-2">
             {/* search icon */}
             <Search size={20} color="white" />
             <TextInput
               // transparent white background
-              placeholder="Search"
-              className="flex-1 text-white bg-transparent"
+              placeholder="Search 'Payments'"
+              className="flex-1 bg-transparent text-white"
               placeholderTextColor="white"
             />
           </View>
@@ -42,7 +47,7 @@ export default function BalanceSection() {
         <View className="items-center justify-center gap-4">
           <View className="items-center justify-center gap-4">
             <View className="flex-row items-center gap-2">
-              <View className="w-6 h-6 rounded-full overflow-hidden bg-white">
+              <View className="h-6 w-6 overflow-hidden rounded-full bg-white">
                 <Image
                   source={{
                     uri: "https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg",
@@ -51,46 +56,57 @@ export default function BalanceSection() {
                 />
               </View>
 
-              <Text className="text-white text-sm">US Dollar</Text>
+              <CustomText variant="body-2-medium" className="text-white">
+                US Dollar
+              </CustomText>
               <ChevronDown size={12} color="white" />
             </View>
-            <Text className="text-white text-4xl font-semibold">
+            <CustomText variant="h2-semibold" className="text-white">
               ${Number(22000).toLocaleString()}
-            </Text>
+            </CustomText>
 
             {/* available balance */}
-            <Text className="text-white text-sm">Available Balance</Text>
+            <CustomText variant="body-2-medium" className="text-white">
+              Available Balance
+            </CustomText>
 
             {/* rounded button to add money */}
-            <TouchableOpacity className="rounded-full p-4 flex-row items-center gap-2 border border-white">
+            <TouchableOpacity className="flex-row items-center gap-2 rounded-full border border-white p-4">
               <Wallet size={20} color="white" />
-              <Text className="text-white">Add Money</Text>
+              <CustomText variant="body-2-semibold" className="text-white">
+                Add Money
+              </CustomText>
             </TouchableOpacity>
           </View>
         </View>
       </SafeAreaView>
 
       {/* send, request, bank buttons */}
-      <View className="absolute z-50 -bottom-8 left-1/2 -translate-x-1/2 flex flex-row items-center gap-12 bg-white rounded-lg py-4 px-8">
-        <TouchableOpacity className="flex items-center">
-          <Send />
-          <Text className="text-lg">Send</Text>
+      <View className="dark:bg-dark-mode-bg absolute -bottom-8 left-1/2 z-50 flex -translate-x-1/2 flex-row items-center gap-12 rounded-lg bg-white px-8 py-4">
+        <TouchableOpacity
+          className="flex items-center gap-2"
+          onPress={() => router.push("/(send)")}
+        >
+          {/* light mode (black colour) and dark mode (blueish colour) */}
+          <Send color={theme === "dark" ? "#2F4CF3" : "#000000"} />
+          <CustomText variant="body-2-medium">Send</CustomText>
         </TouchableOpacity>
 
         {/* vertical separator */}
         <View className="h-[80%] w-px bg-gray-200" />
 
-        <TouchableOpacity className="flex items-center">
-          <ScanBarcode />
-          <Text className="text-lg">Scan</Text>
+        <TouchableOpacity className="flex items-center gap-2">
+          {/* light mode (black colour) and dark mode (yellowish colour) */}
+          <ScanBarcode color={theme === "dark" ? "#FBBF24" : "#000000"} />
+          <CustomText variant="body-2-medium">Scan</CustomText>
         </TouchableOpacity>
 
         {/* vertical separator */}
         <View className="h-[80%] w-px bg-gray-200" />
 
-        <TouchableOpacity className="flex items-center">
-          <Landmark />
-          <Text className="text-lg">Bank</Text>
+        <TouchableOpacity className="flex items-center gap-2">
+          <Landmark color={theme === "dark" ? "#FBBF24" : "#000000"} />
+          <CustomText variant="body-2-medium">Bank</CustomText>
         </TouchableOpacity>
       </View>
     </View>

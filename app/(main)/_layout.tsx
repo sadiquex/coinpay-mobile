@@ -2,16 +2,27 @@ import { Tabs } from "expo-router";
 import React from "react";
 
 import { IconSymbol } from "@/components/ui/icon-symbol";
+import { useTheme } from "@/contexts/theme-context";
 
 export default function MainAppLayout() {
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
+
   return (
     <Tabs
       screenOptions={{
-        // tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
         headerShown: false,
         tabBarLabel: "",
-        // active tab colour is blue
-        tabBarActiveTintColor: "#304FFF",
+        // Active tab color - blue in both themes, slightly lighter in dark mode
+        tabBarActiveTintColor: isDark ? "#5B6FFF" : "#304FFF",
+        // Inactive tab color - gray that adapts to theme
+        tabBarInactiveTintColor: isDark ? "#9CA3AF" : "#687076",
+        // Tab bar background color
+        tabBarStyle: {
+          backgroundColor: isDark ? "#1F2937" : "#FFFFFF",
+          borderTopColor: isDark ? "#374151" : "#E5E7EB",
+          borderTopWidth: 1,
+        },
       }}
     >
       <Tabs.Screen

@@ -3,14 +3,16 @@ import { Href, router } from "expo-router";
 import { ChevronLeft } from "lucide-react-native";
 import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
+import { useTheme } from "@/contexts/theme-context";
 
 export default function ScreenHeader({
-  title,
+  title = "",
   goBackTo,
 }: {
-  title: string;
+  title?: string;
   goBackTo: Href;
 }) {
+  const { theme } = useTheme();
   const handleBack = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
 
@@ -24,10 +26,14 @@ export default function ScreenHeader({
   return (
     <View className="flex-row items-center justify-between">
       <TouchableOpacity onPress={handleBack}>
-        <ChevronLeft size={24} color="black" />
+        <ChevronLeft size={24} color={theme === "dark" ? "white" : "black"} />
       </TouchableOpacity>
       {/* centered title */}
-      <Text className="text-2xl font-semibold text-center flex-1">{title}</Text>
+      {title && (
+        <Text className="flex-1 text-center text-2xl font-semibold dark:text-white">
+          {title}
+        </Text>
+      )}
     </View>
   );
 }
