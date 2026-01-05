@@ -89,12 +89,12 @@ export default function HomeTransactions() {
         />
       </TouchableOpacity>
 
-      <View className="overflow-hidden rounded-lg bg-white p-4 dark:bg-gray-800">
+      <View className="overflow-hidden rounded-2xl bg-white p-4 dark:bg-[#2A2A2A]">
         {categories.map((category, index) => (
           <View key={category.label}>
             <TransactionCategoryRow {...category} />
             {index < categories.length - 1 && (
-              <View className="mx-4 h-px bg-gray-100 dark:bg-gray-700" />
+              <View className="mx-4 h-px bg-[#121212] dark:bg-[#ECEDEE]" />
             )}
           </View>
         ))}

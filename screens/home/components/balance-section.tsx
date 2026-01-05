@@ -19,7 +19,7 @@ export default function BalanceSection() {
   const { theme } = useTheme();
 
   return (
-    <View className="relative min-h-[400px] gap-4 rounded-lg bg-[#2F4CF3] p-4">
+    <View className="bg-primary-blue relative min-h-[400px] gap-4 rounded-lg p-4">
       <SafeAreaView className="flex-1 gap-12">
         {/* trophy,search bar and notificatoins button */}
         <View className="flex-row items-center justify-between gap-4">
@@ -82,7 +82,7 @@ export default function BalanceSection() {
       </SafeAreaView>
 
       {/* send, request, bank buttons */}
-      <View className="dark:bg-dark-mode-bg absolute -bottom-8 left-1/2 z-50 flex -translate-x-1/2 flex-row items-center gap-12 rounded-lg bg-white px-8 py-4">
+      <View className="absolute -bottom-8 left-1/2 z-50 flex -translate-x-1/2 flex-row items-center gap-12 rounded-lg bg-white px-8 py-4 dark:bg-[#2A2A2A]">
         <TouchableOpacity
           className="flex items-center gap-2"
           onPress={() => router.push("/(send)")}

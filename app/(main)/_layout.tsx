@@ -3,6 +3,7 @@ import React from "react";
 
 import { IconSymbol } from "@/components/ui/icon-symbol";
 import { useTheme } from "@/contexts/theme-context";
+import { ChartPie, User } from "lucide-react-native";
 
 export default function MainAppLayout() {
   const { theme } = useTheme();
@@ -16,10 +17,11 @@ export default function MainAppLayout() {
         // Active tab color - blue in both themes, slightly lighter in dark mode
         tabBarActiveTintColor: isDark ? "#5B6FFF" : "#304FFF",
         // Inactive tab color - gray that adapts to theme
-        tabBarInactiveTintColor: isDark ? "#9CA3AF" : "#687076",
+        tabBarInactiveTintColor: isDark ? "#ECEDEE" : "#687076",
         // Tab bar background color
         tabBarStyle: {
-          backgroundColor: isDark ? "#1F2937" : "#FFFFFF",
+          // #2A2A2A
+          backgroundColor: isDark ? "#2A2A2A" : "#FFFFFF",
           borderTopColor: isDark ? "#374151" : "#E5E7EB",
           borderTopWidth: 1,
         },
@@ -36,12 +38,28 @@ export default function MainAppLayout() {
       />
 
       <Tabs.Screen
+        name="spending"
+        options={{
+          title: "Spending",
+          tabBarIcon: ({ color }) => <ChartPie size={28} color={color} />,
+        }}
+      />
+
+      <Tabs.Screen
         name="scan-to-pay"
         options={{
           title: "Scan to Pay",
           tabBarIcon: ({ color }) => (
             <IconSymbol size={28} name="qrcode" color={color} />
           ),
+        }}
+      />
+
+      <Tabs.Screen
+        name="profile"
+        options={{
+          title: "Profile",
+          tabBarIcon: ({ color }) => <User size={28} color={color} />,
         }}
       />
     </Tabs>

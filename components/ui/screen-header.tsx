@@ -8,9 +8,11 @@ import { useTheme } from "@/contexts/theme-context";
 export default function ScreenHeader({
   title = "",
   goBackTo,
+  showBackButton = true,
 }: {
   title?: string;
   goBackTo: Href;
+  showBackButton?: boolean;
 }) {
   const { theme } = useTheme();
   const handleBack = () => {
@@ -25,9 +27,11 @@ export default function ScreenHeader({
 
   return (
     <View className="flex-row items-center justify-between">
-      <TouchableOpacity onPress={handleBack}>
-        <ChevronLeft size={24} color={theme === "dark" ? "white" : "black"} />
-      </TouchableOpacity>
+      {showBackButton && (
+        <TouchableOpacity onPress={handleBack}>
+          <ChevronLeft size={24} color={theme === "dark" ? "white" : "black"} />
+        </TouchableOpacity>
+      )}
       {/* centered title */}
       {title && (
         <Text className="flex-1 text-center text-2xl font-semibold dark:text-white">

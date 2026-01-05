@@ -8,10 +8,9 @@ import Toast from "react-native-toast-message";
 import { ThemeProvider, useTheme } from "@/contexts/theme-context";
 import { CustomToast } from "@/components/ui/custom-toast";
 import "../global.css";
-// import "react-native-reanimated";
 
 export const unstable_settings = {
-  anchor: "(main)",
+  anchor: "(auth)",
 };
 
 export default function RootLayout() {
@@ -28,6 +27,7 @@ function AppContent() {
   return (
     <NavigationThemeProvider value={DefaultTheme}>
       <Stack>
+        <Stack.Screen name="(auth)" options={{ headerShown: false }} />
         <Stack.Screen name="(main)" options={{ headerShown: false }} />
         <Stack.Screen name="(send)" options={{ headerShown: false }} />
       </Stack>

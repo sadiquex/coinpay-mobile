@@ -1,6 +1,5 @@
 import { Container } from "@/components/ui/container";
 import ScreenHeader from "@/components/ui/screen-header";
-import { useTheme } from "@/contexts/theme-context";
 import { router } from "expo-router";
 import { QrCode, Search } from "lucide-react-native";
 import React from "react";
@@ -54,10 +53,9 @@ const recipients: Recipient[] = [
 ];
 
 function RecipientItem({ recipient }: { recipient: Recipient }) {
-  const { theme } = useTheme();
   return (
     <TouchableOpacity
-      className="flex-row items-center py-4"
+      className="flex-row items-center p-4"
       onPress={() => router.push("/(send)/select-purpose")}
     >
       <Image
