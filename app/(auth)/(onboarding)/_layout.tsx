@@ -3,7 +3,11 @@ import React from "react";
 
 export default function OnboardingLayout() {
   return (
-    <Stack>
+    <Stack
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
       <Stack.Screen
         name="index"
         options={{

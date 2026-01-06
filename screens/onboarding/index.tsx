@@ -80,7 +80,8 @@ export default function OnboardingScreen() {
       setCurrentIndex(nextIndex);
     } else {
       // Navigate to main app or login screen
-      router.replace("/(main)");
+      // router.replace("/(main)");
+      router.replace("/(auth)/(signup)");
     }
   };
 
