@@ -60,7 +60,7 @@ export default function SignUpScreen() {
 
             <CustomButton
               size="lg"
-              onPress={() => {}}
+              onPress={() => router.push("/(auth)/(signin)")}
               variant="secondary"
               className="w-full"
             >

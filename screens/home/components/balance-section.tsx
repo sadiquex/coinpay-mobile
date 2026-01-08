@@ -19,7 +19,7 @@ export default function BalanceSection() {
   const { theme } = useTheme();
 
   return (
-    <View className="bg-primary-blue relative min-h-[400px] gap-4 rounded-lg p-4">
+    <View className="relative min-h-[400px] gap-4 rounded-lg bg-primary-blue p-4">
       <SafeAreaView className="flex-1 gap-12">
         {/* trophy,search bar and notificatoins button */}
         <View className="flex-row items-center justify-between gap-4">
@@ -61,8 +61,8 @@ export default function BalanceSection() {
               </CustomText>
               <ChevronDown size={12} color="white" />
             </View>
-            <CustomText variant="h2-semibold" className="text-white">
-              ${Number(22000).toLocaleString()}
+            <CustomText variant="h1-semibold" className="font-bold text-white">
+              $22,000.00
             </CustomText>
 
             {/* available balance */}

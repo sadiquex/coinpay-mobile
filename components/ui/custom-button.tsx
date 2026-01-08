@@ -8,7 +8,7 @@ import {
 import { twMerge } from "tailwind-merge";
 import { CustomText } from "./custom-text";
 
-type ButtonVariant = "primary" | "secondary";
+type ButtonVariant = "primary" | "secondary" | "outline";
 type ButtonSize = "sm" | "md" | "lg";
 
 // Valid text variants for buttons
@@ -36,6 +36,8 @@ const variantStyles: Record<ButtonVariant, string> = {
     "bg-primary-blue active:bg-primary-blue/80 disabled:bg-gray-300 dark:disabled:bg-gray-700",
   secondary:
     "bg-transparent border-2 border-primary-blue active:bg-primary-blue/10 active:border-primary-blue/80 disabled:border-gray-300 dark:active:bg-primary-blue/20 dark:disabled:border-gray-700",
+  outline:
+    "bg-transparent border-2 border-primary-blue active:bg-primary-blue/10 active:border-primary-blue/80 disabled:border-gray-300 dark:active:bg-primary-blue/20 dark:disabled:border-gray-700",
 };
 
 // Size styles
@@ -58,6 +60,8 @@ const sizeStyles: Record<ButtonSize, { container: string; text: string }> = {
 const textColorStyles: Record<ButtonVariant, string> = {
   primary: "text-white disabled:text-gray-500 dark:disabled:text-gray-400",
   secondary:
+    "text-primary-blue disabled:text-gray-400 dark:text-primary-blue dark:disabled:text-gray-600",
+  outline:
     "text-primary-blue disabled:text-gray-400 dark:text-primary-blue dark:disabled:text-gray-600",
 };
 
