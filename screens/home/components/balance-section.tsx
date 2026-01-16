@@ -38,7 +38,10 @@ export default function BalanceSection() {
             />
           </View>
 
-          <TouchableOpacity className="flex items-center">
+          <TouchableOpacity
+            className="flex items-center"
+            onPress={() => router.push("/(notifications)")}
+          >
             <Bell size={20} color="white" />
           </TouchableOpacity>
         </View>

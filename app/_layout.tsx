@@ -1,3 +1,5 @@
+import "react-native-reanimated";
+
 import {
   DefaultTheme,
   ThemeProvider as NavigationThemeProvider,
@@ -5,6 +7,8 @@ import {
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import Toast from "react-native-toast-message";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 import { ThemeProvider, useTheme } from "@/contexts/theme-context";
 import { CustomToast } from "@/components/ui/custom-toast";
 import "../global.css";
@@ -15,9 +19,13 @@ export const unstable_settings = {
 
 export default function RootLayout() {
   return (
-    <ThemeProvider>
-      <AppContent />
-    </ThemeProvider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <BottomSheetModalProvider>
+        <ThemeProvider>
+          <AppContent />
+        </ThemeProvider>
+      </BottomSheetModalProvider>
+    </GestureHandlerRootView>
   );
 }
 
@@ -26,10 +34,15 @@ function AppContent() {
 
   return (
     <NavigationThemeProvider value={DefaultTheme}>
-      <Stack>
+      <Stack
+        screenOptions={{
+          animation: "fade_from_bottom",
+        }}
+      >
         <Stack.Screen name="(auth)" options={{ headerShown: false }} />
         <Stack.Screen name="(main)" options={{ headerShown: false }} />
         <Stack.Screen name="(send)" options={{ headerShown: false }} />
+        <Stack.Screen name="(account-setup)" options={{ headerShown: false }} />
       </Stack>
       <StatusBar style={theme === "dark" ? "light" : "dark"} />
       <Toast

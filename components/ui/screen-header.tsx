@@ -11,7 +11,7 @@ export default function ScreenHeader({
   showBackButton = true,
 }: {
   title?: string;
-  goBackTo: Href;
+  goBackTo?: Href;
   showBackButton?: boolean;
 }) {
   const { theme } = useTheme();

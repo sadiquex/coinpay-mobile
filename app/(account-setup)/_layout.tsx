@@ -1,27 +1,29 @@
 import { Stack } from "expo-router";
 import React from "react";
 
-export default function AuthLayout() {
+export default function AccountSetupLayout() {
   return (
-    <Stack
-      screenOptions={{
-        animation: "fade_from_bottom",
-      }}
-    >
+    <Stack>
       <Stack.Screen
-        name="(onboarding)"
+        name="index"
         options={{
           headerShown: false,
         }}
       />
       <Stack.Screen
-        name="(signup)"
+        name="step-2-home-address"
         options={{
           headerShown: false,
         }}
       />
       <Stack.Screen
-        name="(signin)"
+        name="step-3-personal-information"
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="step-4-country-of-residence"
         options={{
           headerShown: false,
         }}

@@ -5,6 +5,7 @@ import ScreenHeader from "@/components/ui/screen-header";
 import { CustomText } from "@/components/ui/custom-text";
 import { CustomButton } from "@/components/ui/custom-button";
 import { router, useLocalSearchParams } from "expo-router";
+import Toast from "react-native-toast-message";
 
 export default function VerifyPhoneScreen() {
   const params = useLocalSearchParams<{ phoneNumber?: string }>();
@@ -58,7 +59,7 @@ export default function VerifyPhoneScreen() {
     if (isCodeComplete) {
       // TODO: Add verification logic
       // const verificationCode = code.join("");
-      router.push("/(auth)/(signup)/create-account");
+      router.push("/(auth)/(signup)/create-passcode");
     }
   };
 
@@ -66,12 +67,18 @@ export default function VerifyPhoneScreen() {
     // TODO: Add resend logic
     setCode(["", "", "", "", "", ""]);
     inputRefs.current[0]?.focus();
+
+    // toast message
+    Toast.show({
+      text1: `A new code has been sent to ${phoneNumber}`,
+      type: "success",
+    });
   };
 
   return (
     <View className="flex-1 bg-white dark:bg-[#121212]">
       <Container className="gap-6">
-        <ScreenHeader goBackTo="/(auth)/(signup)/enter-phone-number" />
+        <ScreenHeader />
 
         <View className="gap-2">
           <CustomText
@@ -103,7 +110,7 @@ export default function VerifyPhoneScreen() {
                     handleKeyPress(nativeEvent.key, index)
                   }
                   placeholder=""
-                  className="h-14 w-12 rounded-lg border border-gray-200 bg-white text-center text-2xl font-semibold text-[#121212] dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+                  className="h-14 w-12 rounded-lg text-center text-2xl font-semibold text-primary-blue dark:border-gray-700 dark:bg-gray-800 dark:text-white"
                   keyboardType="number-pad"
                   maxLength={1}
                   selectTextOnFocus

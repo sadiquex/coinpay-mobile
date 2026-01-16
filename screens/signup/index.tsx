@@ -7,7 +7,7 @@ import { router } from "expo-router";
 
 export default function SignUpScreen() {
   const handleSignUp = () => {
-    router.push("/(auth)/(signup)/enter-phone-number");
+    router.push("/(auth)/(signup)/create-account");
   };
 
   return (

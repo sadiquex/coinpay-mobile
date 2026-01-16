@@ -1,5 +1,5 @@
 import { View } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import ScreenHeader from "@/components/ui/screen-header";
 import { CustomText } from "@/components/ui/custom-text";
@@ -8,7 +8,7 @@ import { router } from "expo-router";
 import { Bell } from "lucide-react-native";
 
 export default function EnableNotificationsScreen() {
-  const [isRequesting, setIsRequesting] = React.useState(false);
+  const [isRequesting, setIsRequesting] = useState(false);
 
   const handleEnableNotifications = async () => {
     try {
@@ -54,8 +54,8 @@ export default function EnableNotificationsScreen() {
         {/* Main Content */}
         <View className="flex-1 items-center justify-center gap-8">
           {/* Illustration/Icon */}
-          <View className="h-48 w-48 items-center justify-center rounded-full bg-[#304FFF]/10 dark:bg-[#304FFF]/20">
-            <Bell size={80} color="#304FFF" />
+          <View className="items-center justify-center rounded-full bg-[#304FFF]/10 p-8 dark:bg-[#304FFF]/20">
+            <Bell size={50} color="#304FFF" strokeWidth={1.5} />
           </View>
 
           {/* Title and Subtitle */}
